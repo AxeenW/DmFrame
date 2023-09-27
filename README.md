@@ -14,8 +14,10 @@
 - Log UTF-8 without BOM text file
 
 ## 主要更新說明
-### 2023-09-28 00:55
+### 2023-09-28 03:25
 - 新增 Side Menu 作業方式
+- 修正 Logo 顯示方式
+- 初版 完成初版，已可進行 Sode menu 作業
 
 ### 2023-09-27 18:25
 - 新增 Configuration 類別，用來進行配置(Configuration)檔案存取

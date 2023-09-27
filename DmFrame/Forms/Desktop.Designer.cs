@@ -44,21 +44,23 @@ namespace DmFrame.Forms
             dButtonSystemClose = new Button();
             dPanel_1_1_Left = new Panel();
             dPanel_3_Menu = new Panel();
-            dButtonMenuAbount = new Button();
-            dMenuIconList = new ImageList(components);
             dButtonMenuExit = new Button();
+            dMenuIconList = new ImageList(components);
+            dButtonMenuAbount = new Button();
             dButtonMenuTest = new Button();
             dButtonMenuEdit = new Button();
             dButtonMenuSetting = new Button();
             dButtonMenuHome = new Button();
-            panel1 = new Panel();
+            dPanel_3_1_Logo = new Panel();
+            dPicboxLogo = new PictureBox();
             dButtonMenuBar = new Button();
             dPanel_5_Client = new Panel();
             dPanel_2_Status.SuspendLayout();
             dPanel_1_Caption.SuspendLayout();
             dPanel_1_2_System.SuspendLayout();
             dPanel_3_Menu.SuspendLayout();
-            panel1.SuspendLayout();
+            dPanel_3_1_Logo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dPicboxLogo).BeginInit();
             SuspendLayout();
             // 
             // dPanel_2_Status
@@ -134,7 +136,7 @@ namespace DmFrame.Forms
             dPanel_1_Caption.Dock = DockStyle.Top;
             dPanel_1_Caption.Location = new Point(0, 0);
             dPanel_1_Caption.Name = "dPanel_1_Caption";
-            dPanel_1_Caption.Size = new Size(784, 32);
+            dPanel_1_Caption.Size = new Size(784, 40);
             dPanel_1_Caption.TabIndex = 1;
             // 
             // dLabelCaption
@@ -144,7 +146,7 @@ namespace DmFrame.Forms
             dLabelCaption.Font = new Font("Microsoft JhengHei UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             dLabelCaption.Location = new Point(168, 0);
             dLabelCaption.Name = "dLabelCaption";
-            dLabelCaption.Size = new Size(448, 32);
+            dLabelCaption.Size = new Size(448, 40);
             dLabelCaption.TabIndex = 4;
             dLabelCaption.Text = "label1";
             dLabelCaption.TextAlign = ContentAlignment.MiddleCenter;
@@ -157,7 +159,7 @@ namespace DmFrame.Forms
             dPanel_1_2_System.Dock = DockStyle.Right;
             dPanel_1_2_System.Location = new Point(616, 0);
             dPanel_1_2_System.Name = "dPanel_1_2_System";
-            dPanel_1_2_System.Size = new Size(168, 32);
+            dPanel_1_2_System.Size = new Size(168, 40);
             dPanel_1_2_System.TabIndex = 6;
             // 
             // dButtonSystemMinimize
@@ -169,10 +171,10 @@ namespace DmFrame.Forms
             dButtonSystemMinimize.FlatStyle = FlatStyle.Flat;
             dButtonSystemMinimize.ImageIndex = 2;
             dButtonSystemMinimize.ImageList = dSystemIconList;
-            dButtonSystemMinimize.Location = new Point(72, 4);
+            dButtonSystemMinimize.Location = new Point(69, 0);
             dButtonSystemMinimize.Margin = new Padding(0);
             dButtonSystemMinimize.Name = "dButtonSystemMinimize";
-            dButtonSystemMinimize.Size = new Size(32, 28);
+            dButtonSystemMinimize.Size = new Size(33, 28);
             dButtonSystemMinimize.TabIndex = 3;
             dButtonSystemMinimize.UseVisualStyleBackColor = true;
             dButtonSystemMinimize.Click += SystemMinimize_Click;
@@ -182,10 +184,10 @@ namespace DmFrame.Forms
             dSystemIconList.ColorDepth = ColorDepth.Depth32Bit;
             dSystemIconList.ImageStream = (ImageListStreamer)resources.GetObject("dSystemIconList.ImageStream");
             dSystemIconList.TransparentColor = Color.Transparent;
-            dSystemIconList.Images.SetKeyName(0, "icons8-color-close-window-48-red.png");
-            dSystemIconList.Images.SetKeyName(1, "icons8-color-maximize-window-48.png");
-            dSystemIconList.Images.SetKeyName(2, "icons8-color-minimize-window-48.png");
-            dSystemIconList.Images.SetKeyName(3, "icons8-color-restore-window-48.png");
+            dSystemIconList.Images.SetKeyName(0, "icons8-close-window-32-blue.png");
+            dSystemIconList.Images.SetKeyName(1, "icons8-maximize-window-32.png");
+            dSystemIconList.Images.SetKeyName(2, "icons8-minimize-window-32.png");
+            dSystemIconList.Images.SetKeyName(3, "icons8-restore-window-32.png");
             // 
             // dButtonSystemMaximize
             // 
@@ -196,10 +198,10 @@ namespace DmFrame.Forms
             dButtonSystemMaximize.FlatStyle = FlatStyle.Flat;
             dButtonSystemMaximize.ImageIndex = 1;
             dButtonSystemMaximize.ImageList = dSystemIconList;
-            dButtonSystemMaximize.Location = new Point(104, 4);
+            dButtonSystemMaximize.Location = new Point(102, 0);
             dButtonSystemMaximize.Margin = new Padding(0);
             dButtonSystemMaximize.Name = "dButtonSystemMaximize";
-            dButtonSystemMaximize.Size = new Size(32, 28);
+            dButtonSystemMaximize.Size = new Size(33, 28);
             dButtonSystemMaximize.TabIndex = 2;
             dButtonSystemMaximize.UseVisualStyleBackColor = true;
             dButtonSystemMaximize.Click += SystemMaximize_Click;
@@ -213,10 +215,10 @@ namespace DmFrame.Forms
             dButtonSystemClose.FlatStyle = FlatStyle.Flat;
             dButtonSystemClose.ImageIndex = 0;
             dButtonSystemClose.ImageList = dSystemIconList;
-            dButtonSystemClose.Location = new Point(136, 4);
+            dButtonSystemClose.Location = new Point(135, 0);
             dButtonSystemClose.Margin = new Padding(0);
             dButtonSystemClose.Name = "dButtonSystemClose";
-            dButtonSystemClose.Size = new Size(32, 28);
+            dButtonSystemClose.Size = new Size(33, 28);
             dButtonSystemClose.TabIndex = 1;
             dButtonSystemClose.UseVisualStyleBackColor = true;
             dButtonSystemClose.Click += SystemClose_Click;
@@ -226,23 +228,66 @@ namespace DmFrame.Forms
             dPanel_1_1_Left.Dock = DockStyle.Left;
             dPanel_1_1_Left.Location = new Point(0, 0);
             dPanel_1_1_Left.Name = "dPanel_1_1_Left";
-            dPanel_1_1_Left.Size = new Size(168, 32);
+            dPanel_1_1_Left.Size = new Size(168, 40);
             dPanel_1_1_Left.TabIndex = 5;
             // 
             // dPanel_3_Menu
             // 
-            dPanel_3_Menu.Controls.Add(dButtonMenuAbount);
             dPanel_3_Menu.Controls.Add(dButtonMenuExit);
+            dPanel_3_Menu.Controls.Add(dButtonMenuAbount);
             dPanel_3_Menu.Controls.Add(dButtonMenuTest);
             dPanel_3_Menu.Controls.Add(dButtonMenuEdit);
             dPanel_3_Menu.Controls.Add(dButtonMenuSetting);
             dPanel_3_Menu.Controls.Add(dButtonMenuHome);
-            dPanel_3_Menu.Controls.Add(panel1);
+            dPanel_3_Menu.Controls.Add(dPanel_3_1_Logo);
             dPanel_3_Menu.Dock = DockStyle.Left;
-            dPanel_3_Menu.Location = new Point(0, 32);
+            dPanel_3_Menu.Location = new Point(0, 40);
             dPanel_3_Menu.Name = "dPanel_3_Menu";
-            dPanel_3_Menu.Size = new Size(168, 501);
+            dPanel_3_Menu.Size = new Size(168, 493);
             dPanel_3_Menu.TabIndex = 2;
+            // 
+            // dButtonMenuExit
+            // 
+            dButtonMenuExit.Dock = DockStyle.Bottom;
+            dButtonMenuExit.FlatAppearance.BorderSize = 0;
+            dButtonMenuExit.FlatAppearance.MouseDownBackColor = Color.Silver;
+            dButtonMenuExit.FlatAppearance.MouseOverBackColor = Color.SteelBlue;
+            dButtonMenuExit.FlatStyle = FlatStyle.Flat;
+            dButtonMenuExit.ImageAlign = ContentAlignment.MiddleLeft;
+            dButtonMenuExit.ImageIndex = 4;
+            dButtonMenuExit.ImageList = dMenuIconList;
+            dButtonMenuExit.Location = new Point(0, 447);
+            dButtonMenuExit.Name = "dButtonMenuExit";
+            dButtonMenuExit.Size = new Size(168, 46);
+            dButtonMenuExit.TabIndex = 6;
+            dButtonMenuExit.TextAlign = ContentAlignment.MiddleLeft;
+            dButtonMenuExit.UseVisualStyleBackColor = true;
+            dButtonMenuExit.Click += SystemClose_Click;
+            // 
+            // dMenuIconList
+            // 
+            dMenuIconList.ColorDepth = ColorDepth.Depth32Bit;
+            dMenuIconList.ImageStream = (ImageListStreamer)resources.GetObject("dMenuIconList.ImageStream");
+            dMenuIconList.TransparentColor = Color.Transparent;
+            dMenuIconList.Images.SetKeyName(0, "icons8-about-32.png");
+            dMenuIconList.Images.SetKeyName(1, "icons8-edit-32.png");
+            dMenuIconList.Images.SetKeyName(2, "icons8-exit-32.png");
+            dMenuIconList.Images.SetKeyName(3, "icons8-exit-32-1.png");
+            dMenuIconList.Images.SetKeyName(4, "icons8-exit-32-2.png");
+            dMenuIconList.Images.SetKeyName(5, "icons8-file-32.png");
+            dMenuIconList.Images.SetKeyName(6, "icons8-gear-32.png");
+            dMenuIconList.Images.SetKeyName(7, "icons8-help-32.png");
+            dMenuIconList.Images.SetKeyName(8, "icons8-home-32.png");
+            dMenuIconList.Images.SetKeyName(9, "icons8-image-32.png");
+            dMenuIconList.Images.SetKeyName(10, "icons8-maximize-window-32 (1).png");
+            dMenuIconList.Images.SetKeyName(11, "icons8-menu-32.png");
+            dMenuIconList.Images.SetKeyName(12, "icons8-photo-32.png");
+            dMenuIconList.Images.SetKeyName(13, "icons8-setting-32.png");
+            dMenuIconList.Images.SetKeyName(14, "icons8-test-32.png");
+            dMenuIconList.Images.SetKeyName(15, "icons8-toolbox-32.png");
+            dMenuIconList.Images.SetKeyName(16, "icons8-tools-32.png");
+            dMenuIconList.Images.SetKeyName(17, "icons8-wifi-32.png");
+            dMenuIconList.Images.SetKeyName(18, "icons8-wifi-32-empty.png");
             // 
             // dButtonMenuAbount
             // 
@@ -261,46 +306,6 @@ namespace DmFrame.Forms
             dButtonMenuAbount.TextAlign = ContentAlignment.MiddleLeft;
             dButtonMenuAbount.UseVisualStyleBackColor = true;
             // 
-            // dMenuIconList
-            // 
-            dMenuIconList.ColorDepth = ColorDepth.Depth32Bit;
-            dMenuIconList.ImageStream = (ImageListStreamer)resources.GetObject("dMenuIconList.ImageStream");
-            dMenuIconList.TransparentColor = Color.Transparent;
-            dMenuIconList.Images.SetKeyName(0, "icons8-about-48.png");
-            dMenuIconList.Images.SetKeyName(1, "icons8-edit-48.png");
-            dMenuIconList.Images.SetKeyName(2, "icons8-exit-48.png");
-            dMenuIconList.Images.SetKeyName(3, "icons8-file-48.png");
-            dMenuIconList.Images.SetKeyName(4, "icons8-gear-48.png");
-            dMenuIconList.Images.SetKeyName(5, "icons8-help-48.png");
-            dMenuIconList.Images.SetKeyName(6, "icons8-home-48.png");
-            dMenuIconList.Images.SetKeyName(7, "icons8-image-48.png");
-            dMenuIconList.Images.SetKeyName(8, "icons8-menu-48.png");
-            dMenuIconList.Images.SetKeyName(9, "icons8-photo-48.png");
-            dMenuIconList.Images.SetKeyName(10, "icons8-setting-48.png");
-            dMenuIconList.Images.SetKeyName(11, "icons8-test-48.png");
-            dMenuIconList.Images.SetKeyName(12, "icons8-toolbox-48.png");
-            dMenuIconList.Images.SetKeyName(13, "icons8-tools-48.png");
-            dMenuIconList.Images.SetKeyName(14, "icons8-wifi-empty-48.png");
-            dMenuIconList.Images.SetKeyName(15, "icons8-wifi-full-48.png");
-            // 
-            // dButtonMenuExit
-            // 
-            dButtonMenuExit.Dock = DockStyle.Bottom;
-            dButtonMenuExit.FlatAppearance.BorderSize = 0;
-            dButtonMenuExit.FlatAppearance.MouseDownBackColor = Color.Silver;
-            dButtonMenuExit.FlatAppearance.MouseOverBackColor = Color.SteelBlue;
-            dButtonMenuExit.FlatStyle = FlatStyle.Flat;
-            dButtonMenuExit.ImageAlign = ContentAlignment.MiddleLeft;
-            dButtonMenuExit.ImageIndex = 2;
-            dButtonMenuExit.ImageList = dMenuIconList;
-            dButtonMenuExit.Location = new Point(0, 455);
-            dButtonMenuExit.Name = "dButtonMenuExit";
-            dButtonMenuExit.Size = new Size(168, 46);
-            dButtonMenuExit.TabIndex = 6;
-            dButtonMenuExit.TextAlign = ContentAlignment.MiddleLeft;
-            dButtonMenuExit.UseVisualStyleBackColor = true;
-            dButtonMenuExit.Click += SystemClose_Click;
-            // 
             // dButtonMenuTest
             // 
             dButtonMenuTest.Dock = DockStyle.Top;
@@ -309,7 +314,7 @@ namespace DmFrame.Forms
             dButtonMenuTest.FlatAppearance.MouseOverBackColor = Color.SteelBlue;
             dButtonMenuTest.FlatStyle = FlatStyle.Flat;
             dButtonMenuTest.ImageAlign = ContentAlignment.MiddleLeft;
-            dButtonMenuTest.ImageIndex = 11;
+            dButtonMenuTest.ImageIndex = 14;
             dButtonMenuTest.ImageList = dMenuIconList;
             dButtonMenuTest.Location = new Point(0, 204);
             dButtonMenuTest.Name = "dButtonMenuTest";
@@ -343,7 +348,7 @@ namespace DmFrame.Forms
             dButtonMenuSetting.FlatAppearance.MouseOverBackColor = Color.SteelBlue;
             dButtonMenuSetting.FlatStyle = FlatStyle.Flat;
             dButtonMenuSetting.ImageAlign = ContentAlignment.MiddleLeft;
-            dButtonMenuSetting.ImageIndex = 4;
+            dButtonMenuSetting.ImageIndex = 6;
             dButtonMenuSetting.ImageList = dMenuIconList;
             dButtonMenuSetting.Location = new Point(0, 112);
             dButtonMenuSetting.Name = "dButtonMenuSetting";
@@ -360,7 +365,7 @@ namespace DmFrame.Forms
             dButtonMenuHome.FlatAppearance.MouseOverBackColor = Color.SteelBlue;
             dButtonMenuHome.FlatStyle = FlatStyle.Flat;
             dButtonMenuHome.ImageAlign = ContentAlignment.MiddleLeft;
-            dButtonMenuHome.ImageIndex = 6;
+            dButtonMenuHome.ImageIndex = 8;
             dButtonMenuHome.ImageList = dMenuIconList;
             dButtonMenuHome.Location = new Point(0, 66);
             dButtonMenuHome.Name = "dButtonMenuHome";
@@ -369,26 +374,38 @@ namespace DmFrame.Forms
             dButtonMenuHome.TextAlign = ContentAlignment.MiddleLeft;
             dButtonMenuHome.UseVisualStyleBackColor = true;
             // 
-            // panel1
+            // dPanel_3_1_Logo
             // 
-            panel1.Controls.Add(dButtonMenuBar);
-            panel1.Dock = DockStyle.Top;
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(168, 66);
-            panel1.TabIndex = 7;
+            dPanel_3_1_Logo.Controls.Add(dPicboxLogo);
+            dPanel_3_1_Logo.Controls.Add(dButtonMenuBar);
+            dPanel_3_1_Logo.Dock = DockStyle.Top;
+            dPanel_3_1_Logo.Location = new Point(0, 0);
+            dPanel_3_1_Logo.Name = "dPanel_3_1_Logo";
+            dPanel_3_1_Logo.Size = new Size(168, 66);
+            dPanel_3_1_Logo.TabIndex = 7;
+            // 
+            // dPicboxLogo
+            // 
+            dPicboxLogo.Dock = DockStyle.Fill;
+            dPicboxLogo.Image = (Image)resources.GetObject("dPicboxLogo.Image");
+            dPicboxLogo.Location = new Point(0, 0);
+            dPicboxLogo.Name = "dPicboxLogo";
+            dPicboxLogo.Size = new Size(128, 66);
+            dPicboxLogo.SizeMode = PictureBoxSizeMode.Zoom;
+            dPicboxLogo.TabIndex = 1;
+            dPicboxLogo.TabStop = false;
             // 
             // dButtonMenuBar
             // 
-            dButtonMenuBar.Dock = DockStyle.Left;
+            dButtonMenuBar.Dock = DockStyle.Right;
             dButtonMenuBar.FlatAppearance.BorderSize = 0;
             dButtonMenuBar.FlatAppearance.MouseDownBackColor = Color.Silver;
             dButtonMenuBar.FlatAppearance.MouseOverBackColor = Color.SteelBlue;
             dButtonMenuBar.FlatStyle = FlatStyle.Flat;
             dButtonMenuBar.ImageAlign = ContentAlignment.MiddleLeft;
-            dButtonMenuBar.ImageIndex = 8;
+            dButtonMenuBar.ImageIndex = 11;
             dButtonMenuBar.ImageList = dMenuIconList;
-            dButtonMenuBar.Location = new Point(0, 0);
+            dButtonMenuBar.Location = new Point(128, 0);
             dButtonMenuBar.Name = "dButtonMenuBar";
             dButtonMenuBar.Size = new Size(40, 66);
             dButtonMenuBar.TabIndex = 0;
@@ -400,9 +417,9 @@ namespace DmFrame.Forms
             // 
             dPanel_5_Client.BackColor = Color.FromArgb(31, 31, 31);
             dPanel_5_Client.Dock = DockStyle.Fill;
-            dPanel_5_Client.Location = new Point(168, 32);
+            dPanel_5_Client.Location = new Point(168, 40);
             dPanel_5_Client.Name = "dPanel_5_Client";
-            dPanel_5_Client.Size = new Size(616, 501);
+            dPanel_5_Client.Size = new Size(616, 493);
             dPanel_5_Client.TabIndex = 3;
             // 
             // Desktop
@@ -427,7 +444,8 @@ namespace DmFrame.Forms
             dPanel_1_Caption.ResumeLayout(false);
             dPanel_1_2_System.ResumeLayout(false);
             dPanel_3_Menu.ResumeLayout(false);
-            panel1.ResumeLayout(false);
+            dPanel_3_1_Logo.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dPicboxLogo).EndInit();
             ResumeLayout(false);
         }
 
@@ -455,8 +473,9 @@ namespace DmFrame.Forms
         private Button dButtonMenuEdit;
         private Button dButtonMenuSetting;
         private Button dButtonMenuHome;
-        private Panel panel1;
+        private Panel dPanel_3_1_Logo;
         private Panel dPanel_1_2_System;
         private Panel dPanel_1_1_Left;
+        private PictureBox dPicboxLogo;
     }
 }

@@ -17,14 +17,6 @@ namespace DmFrame.Forms
         private Task? mClockRunsTask;   // 顯示時間 Task
         #endregion
 
-        #region Win32api
-        [DllImport("User32.dll", EntryPoint = "ReleaseCapture")]
-        private extern static void ReleaseCapture();
-
-        [DllImport("User32.dll", EntryPoint = "SendMessage")]
-        private extern static void SendMessage(System.IntPtr hWnd, int msg, int wParam, int lParam);
-        #endregion
-
         #region 建構及初始化
         public Desktop()
         {
@@ -70,31 +62,14 @@ namespace DmFrame.Forms
         /// <param name="m"></param>
         protected override void WndProc(ref Message m)
         {
-
-            const int WM_NCCALCSIZE = 0x0083;       // Standar Title Bar - Snap Window
-            const int WM_SYSCOMMAND = 0x0112;
-            const int SC_MINIMIZE = 0xF020;         // Minimize form (Before)
-            const int SC_RESTORE = 0xF120;          // Restore form (Before)
-            const int WM_NCHITTEST = 0x0084;        // Win32, Mouse Input Notification: Determine what part of the window corresponds to a point, allows to resize the form.
             const int resizeAreaSize = 10;
 
-            // 變更視窗大小
-            const int HTCLIENT = 1;                 // Represents the client area of the window
-            const int HTLEFT = 10;                  // Left border of a window, allows resize horizontally to the left
-            const int HTRIGHT = 11;                 // Right border of a window, allows resize horizontally to the right
-            const int HTTOP = 12;                   // Upper-horizontal border of a window, allows resize vertically up
-            const int HTTOPLEFT = 13;               // Upper-left corner of a window border, allows resize diagonally to the left
-            const int HTTOPRIGHT = 14;              // Upper-right corner of a window border, allows resize diagonally to the right
-            const int HTBOTTOM = 15;                // Lower-horizontal border of a window, allows resize vertically down
-            const int HTBOTTOMLEFT = 16;            // Lower-left corner of a window border, allows resize diagonally to the left
-            const int HTBOTTOMRIGHT = 17;           // Lower-right corner of a window border, allows resize diagonally to the right
-
-            if (m.Msg == WM_NCHITTEST) {
+            if (m.Msg == Win32.WM_NCHITTEST) {
                 base.WndProc(ref m);
 
                 if (this.WindowState == FormWindowState.Normal) {
                     // If the result of the m (mouse pointer) is in the client area of the window
-                    if ((int)m.Result == HTCLIENT) {
+                    if ((int)m.Result == Win32.HTCLIENT) {
                         // Gets screen point coordinates(X and Y coordinate of the pointer)
                         Point screenPoint = new Point(m.LParam.ToInt32());
 
@@ -106,16 +81,16 @@ namespace DmFrame.Forms
                             // If the pointer is at the coordinate X=0 or less than the resizing area(X=10) in 
                             if (clientPoint.X <= resizeAreaSize) {
                                 // Resize diagonally to the left
-                                m.Result = (IntPtr)HTTOPLEFT;
+                                m.Result = (IntPtr)Win32.HTTOPLEFT;
                             }
                             // If the pointer is at the coordinate X=11 or less than the width of the form(X=Form.Width-resizeArea)
                             else if (clientPoint.X < (this.Size.Width - resizeAreaSize)) {
                                 // Resize vertically up
-                                m.Result = (IntPtr)HTTOP;
+                                m.Result = (IntPtr)Win32.HTTOP;
                             }
                             else {
                                 // Resize diagonally to the right
-                                m.Result = (IntPtr)HTTOPRIGHT;
+                                m.Result = (IntPtr)Win32.HTTOPRIGHT;
                             }
                         }
 
@@ -123,21 +98,21 @@ namespace DmFrame.Forms
                         else if (clientPoint.Y <= (this.Size.Height - resizeAreaSize)) {
                             // Resize horizontally to the left
                             if (clientPoint.X <= resizeAreaSize)
-                                m.Result = (IntPtr)HTLEFT;
+                                m.Result = (IntPtr)Win32.HTLEFT;
                             // Resize horizontally to the right
                             else if (clientPoint.X > (this.Width - resizeAreaSize))
-                                m.Result = (IntPtr)HTRIGHT;
+                                m.Result = (IntPtr)Win32.HTRIGHT;
                         }
                         else {
                             // Resize diagonally to the left
                             if (clientPoint.X <= resizeAreaSize)
-                                m.Result = (IntPtr)HTBOTTOMLEFT;
+                                m.Result = (IntPtr)Win32.HTBOTTOMLEFT;
                             // Resize vertically down
                             else if (clientPoint.X < (this.Size.Width - resizeAreaSize))
-                                m.Result = (IntPtr)HTBOTTOM;
+                                m.Result = (IntPtr)Win32.HTBOTTOM;
                             // Resize diagonally to the right
                             else
-                                m.Result = (IntPtr)HTBOTTOMRIGHT;
+                                m.Result = (IntPtr)Win32.HTBOTTOMRIGHT;
                         }
                     }
                 }
@@ -145,19 +120,21 @@ namespace DmFrame.Forms
             }
 
             // Remove border and keep snap window
-            if (m.Msg == WM_NCCALCSIZE && m.WParam.ToInt32() != 0) {
+            if (m.Msg == Win32.WM_NCCALCSIZE && m.WParam.ToInt32() != 0) {
                 return;
             }
 
             // Keep form size when it is minimized and restored. Since the form is resized because it takes into account the size of the title bar and borders.
-            if (m.Msg == WM_SYSCOMMAND) {
+            if (m.Msg == Win32.WM_SYSCOMMAND) {
                 int wParam = (m.WParam.ToInt32() & 0xFFF0);
-                // Before
-                if (wParam == SC_MINIMIZE)
+
+                if (wParam == Win32.SC_MINIMIZE) {
                     mFormSize = this.ClientSize;
-                // Restored form(Before)
-                if (wParam == SC_RESTORE)
+                }
+
+                if (wParam == Win32.SC_RESTORE) {
                     this.Size = mFormSize;
+                }
             }
             base.WndProc(ref m);
         }
@@ -181,8 +158,8 @@ namespace DmFrame.Forms
         /// <param name="e"></param>
         private void Dashboard_MouseDown(object sender, MouseEventArgs e)
         {
-            ReleaseCapture();
-            SendMessage(this.Handle, 0x112, 0xF012, 0);
+            Win32.ReleaseCapture();
+            Win32.SendMessage(this.Handle, 0x112, 0xF012, 0);
         }
 
         /// <summary>
@@ -192,7 +169,9 @@ namespace DmFrame.Forms
         /// <param name="e"></param>
         private void SystemClose_Click(object sender, EventArgs e)
         {
-            this.Close();
+            // this.Close();
+            const int SC_CLOSE = 0xF060;
+            Win32.PostMessage(this.Handle, Win32.WM_SYSCOMMAND, SC_CLOSE, 0);
         }
 
         /// <summary>
@@ -202,7 +181,13 @@ namespace DmFrame.Forms
         /// <param name="e"></param>
         private void SystemMinimize_Click(object sender, EventArgs e)
         {
+            // const int SC_MINIMIZE = 0xF020;
+            // Win32.PostMessage(this.Handle, Win32.WM_SYSCOMMAND, SC_MINIMIZE, 0);
+
             this.WindowState = FormWindowState.Minimized;
+            Win32.AnimateWindow(this.Handle, 2000, Win32.AW_BLEND);
+            // Win32.AnimateWindow(this.Handle, 2000, Win32.AW_BLEND);
+
         }
 
         /// <summary>
@@ -212,6 +197,9 @@ namespace DmFrame.Forms
         /// <param name="e"></param>
         private void SystemMaximize_Click(object sender, EventArgs e)
         {
+            // const int SC_MAXIMIZE = 0xF030;
+            // Win32.PostMessage(this.Handle, Win32.WM_SYSCOMMAND, SC_MAXIMIZE, 0);
+
             if (this.WindowState == FormWindowState.Maximized) {
                 this.WindowState = FormWindowState.Normal;
             }
@@ -487,6 +475,7 @@ namespace DmFrame.Forms
 
             // 設定 Menu 區域內容
             dPanel_3_Menu.Width = Defaults.Sized.DesktopMenuMaxWidth;
+            dButtonMenuBar.Width = Defaults.Sized.DesktopMenuMinWidth;
 
             Demo.Tracer("設定視窗初始資訊完成");
         }

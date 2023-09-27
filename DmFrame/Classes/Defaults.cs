@@ -9,7 +9,7 @@ namespace DmFrame.Classes
             public static readonly int BoarderSize = 2;             // 邊框大小
 
             public static readonly int DesktopMenuMaxWidth = 168;   // 主視窗選單最大寬度
-            public static readonly int DesktopMenuMinWidth = 40;    // 主視窗選單最小寬度
+            public static readonly int DesktopMenuMinWidth = 46;    // 主視窗選單最小寬度
             public static readonly int LeftRightWidth = 8;
         }
     }
