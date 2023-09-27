@@ -14,6 +14,9 @@
 - Log UTF-8 without BOM text file
 
 ## 主要更新說明
+### 2023-09-28 00:55
+- 新增 Side Menu 作業方式
+
 ### 2023-09-27 18:25
 - 新增 Configuration 類別，用來進行配置(Configuration)檔案存取
 - 應用 Configuration 類別，進行視窗狀態存取。

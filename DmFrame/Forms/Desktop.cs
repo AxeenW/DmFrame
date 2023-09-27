@@ -47,10 +47,18 @@ namespace DmFrame.Forms
             this.BackColor = Color.FromArgb(96, 100, 232);
             mFormSize = this.ClientSize;
 
+            // 各 Panel設定初始值
             this.dPanel_1_Caption.BackColor = Color.FromArgb(26, 26, 26);
             this.dPanel_2_Status.BackColor = Color.FromArgb(134, 27, 45);
             this.dPanel_3_Menu.BackColor = Color.FromArgb(26, 26, 26);
             this.dPanel_5_Client.BackColor = Color.FromArgb(31, 31, 31);
+
+            // 設定標題列可移動式窗
+            dPanel_1_Caption.MouseDown += Dashboard_MouseDown!;
+            dPanel_1_1_Left.MouseDown += Dashboard_MouseDown!;
+            dPanel_1_2_System.MouseDown += Dashboard_MouseDown!;
+            dLabelCaption.MouseDown += Dashboard_MouseDown!;
+
             Demo.Tracer("主視窗初始化使用者物件完畢。");
         }
         #endregion
@@ -187,11 +195,21 @@ namespace DmFrame.Forms
             this.Close();
         }
 
+        /// <summary>
+        /// 視窗最小化按鈕觸發通知
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SystemMinimize_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
         }
 
+        /// <summary>
+        /// 視窗最大化按鈕觸發通知
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SystemMaximize_Click(object sender, EventArgs e)
         {
             if (this.WindowState == FormWindowState.Maximized) {
@@ -208,6 +226,18 @@ namespace DmFrame.Forms
         private void StatusBlock_DoubleClick(object sender, EventArgs e)
         {
             this.LoadFormDefault();
+        }
+
+        /// <summary>
+        /// 選單按鈕 Click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MenuBar_Click(object sender, EventArgs e)
+        {
+            dPanel_3_Menu.Width = dPanel_3_Menu.Width >= Defaults.Sized.DesktopMenuMaxWidth
+                ? Defaults.Sized.DesktopMenuMinWidth
+                : Defaults.Sized.DesktopMenuMaxWidth;
         }
 
         /// <summary>
@@ -471,5 +501,6 @@ namespace DmFrame.Forms
             Demo.Tracer("恢復初始視窗預設大小及位置");
         }
         #endregion
+
     }
 }
