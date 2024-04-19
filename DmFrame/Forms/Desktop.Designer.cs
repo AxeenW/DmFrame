@@ -143,7 +143,7 @@ namespace DmFrame.Forms
             // 
             dLabelCaption.Dock = DockStyle.Fill;
             dLabelCaption.FlatStyle = FlatStyle.Flat;
-            dLabelCaption.Font = new Font("Microsoft JhengHei UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            dLabelCaption.Font = new Font("Microsoft JhengHei UI", 9.75F, FontStyle.Bold);
             dLabelCaption.Location = new Point(168, 0);
             dLabelCaption.Name = "dLabelCaption";
             dLabelCaption.Size = new Size(448, 40);
@@ -431,7 +431,7 @@ namespace DmFrame.Forms
             Controls.Add(dPanel_3_Menu);
             Controls.Add(dPanel_2_Status);
             Controls.Add(dPanel_1_Caption);
-            Font = new Font("Microsoft JhengHei UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            Font = new Font("Microsoft JhengHei UI", 9F);
             ForeColor = Color.FromArgb(250, 250, 250);
             Name = "Desktop";
             StartPosition = FormStartPosition.CenterScreen;
