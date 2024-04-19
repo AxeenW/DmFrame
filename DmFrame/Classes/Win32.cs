@@ -51,7 +51,7 @@ namespace DmFrame.Classes
         public const int AW_BLEND           = 0x00080000;   // 使用淡出效果。只有當hWnd為頂層視窗的時候才可以使用此標誌。
 
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
-        public static extern bool AnimateWindow(IntPtr hwnd, int dwTime, int dwFlags);
+        public static extern bool AnimateWindow(System.IntPtr hwnd, int dwTime, int dwFlags);
     }
 
 }

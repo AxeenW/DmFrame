@@ -412,7 +412,6 @@ namespace DmFrame.Forms
                     break;
                 default: break;
             }
-
         }
 
         /// <summary>

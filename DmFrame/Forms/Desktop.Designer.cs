@@ -164,7 +164,7 @@ namespace DmFrame.Forms
             // 
             // dButtonSystemMinimize
             // 
-            dButtonSystemMinimize.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            dButtonSystemMinimize.Dock = DockStyle.Right;
             dButtonSystemMinimize.FlatAppearance.BorderSize = 0;
             dButtonSystemMinimize.FlatAppearance.MouseDownBackColor = Color.Silver;
             dButtonSystemMinimize.FlatAppearance.MouseOverBackColor = Color.DimGray;
@@ -174,7 +174,7 @@ namespace DmFrame.Forms
             dButtonSystemMinimize.Location = new Point(69, 0);
             dButtonSystemMinimize.Margin = new Padding(0);
             dButtonSystemMinimize.Name = "dButtonSystemMinimize";
-            dButtonSystemMinimize.Size = new Size(33, 28);
+            dButtonSystemMinimize.Size = new Size(33, 40);
             dButtonSystemMinimize.TabIndex = 3;
             dButtonSystemMinimize.UseVisualStyleBackColor = true;
             dButtonSystemMinimize.Click += SystemMinimize_Click;
@@ -191,7 +191,7 @@ namespace DmFrame.Forms
             // 
             // dButtonSystemMaximize
             // 
-            dButtonSystemMaximize.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            dButtonSystemMaximize.Dock = DockStyle.Right;
             dButtonSystemMaximize.FlatAppearance.BorderSize = 0;
             dButtonSystemMaximize.FlatAppearance.MouseDownBackColor = Color.Silver;
             dButtonSystemMaximize.FlatAppearance.MouseOverBackColor = Color.DimGray;
@@ -201,14 +201,14 @@ namespace DmFrame.Forms
             dButtonSystemMaximize.Location = new Point(102, 0);
             dButtonSystemMaximize.Margin = new Padding(0);
             dButtonSystemMaximize.Name = "dButtonSystemMaximize";
-            dButtonSystemMaximize.Size = new Size(33, 28);
+            dButtonSystemMaximize.Size = new Size(33, 40);
             dButtonSystemMaximize.TabIndex = 2;
             dButtonSystemMaximize.UseVisualStyleBackColor = true;
             dButtonSystemMaximize.Click += SystemMaximize_Click;
             // 
             // dButtonSystemClose
             // 
-            dButtonSystemClose.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            dButtonSystemClose.Dock = DockStyle.Right;
             dButtonSystemClose.FlatAppearance.BorderSize = 0;
             dButtonSystemClose.FlatAppearance.MouseDownBackColor = Color.Silver;
             dButtonSystemClose.FlatAppearance.MouseOverBackColor = Color.DimGray;
@@ -218,7 +218,7 @@ namespace DmFrame.Forms
             dButtonSystemClose.Location = new Point(135, 0);
             dButtonSystemClose.Margin = new Padding(0);
             dButtonSystemClose.Name = "dButtonSystemClose";
-            dButtonSystemClose.Size = new Size(33, 28);
+            dButtonSystemClose.Size = new Size(33, 40);
             dButtonSystemClose.TabIndex = 1;
             dButtonSystemClose.UseVisualStyleBackColor = true;
             dButtonSystemClose.Click += SystemClose_Click;
